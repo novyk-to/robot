@@ -4,15 +4,15 @@
       <CollapsibleSection>
         <div class="preview-content">
           <div class="top-row">
-            <img :src="selectedRobot.head.src" />
+            <img :src="selectedRobot.head.src">
           </div>
           <div class="middle-row">
-            <img :src="selectedRobot.leftArm.src" class="rotate-left" />
-            <img :src="selectedRobot.torso.src" />
-            <img :src="selectedRobot.rightArm.src" class="rotate-right" />
+            <img :src="selectedRobot.leftArm.src" class="rotate-left">
+            <img :src="selectedRobot.torso.src">
+            <img :src="selectedRobot.rightArm.src" class="rotate-right">
           </div>
           <div class="bottom-row">
-            <img :src="selectedRobot.base.src" />
+            <img :src="selectedRobot.base.src">
           </div>
         </div>
       </CollapsibleSection>
@@ -84,11 +84,24 @@ import PartSelector from "../build/PartSelector.vue";
 import CollapsibleSection from "../shared/CollapsibleSection.vue";
 
 export default {
+  beforeRouteLeave(to, from, next) {
+    if (this.addedToCart) {
+      next(true);
+    } else {
+      /*eslint no-alert:0 */
+      /*eslint no-restricted-globals:0 */
+      const response = confirm(
+        "You are not added your robot to cart, are you sure you want to leave?"
+      );
+      next(response);
+    }
+  },
   name: "RobotBuilder",
   components: { PartSelector, CollapsibleSection },
   data() {
     return {
       availableParts,
+      addedToCart: false,
       cart: [],
       selectedRobot: {
         head: {},
@@ -124,6 +137,7 @@ export default {
         robot.torso.cost +
         robot.base.cost;
       this.cart.push(Object.assign({}, robot, { cost }));
+      this.addedToCart = true;
     }
   }
 };
