@@ -1,29 +1,6 @@
 # build-a-bot
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### HOW TO RUN
+1. Open cmd and execute command: npm run install-all.
+2. Execute command: npm run start.
+3. Open in browser http://localhost:8080/.
