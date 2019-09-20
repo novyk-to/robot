@@ -80,7 +80,7 @@ export default {
   },
   name: "RobotBuilder",
   created() {
-    this.$store.dispatch("getParts");
+    this.$store.dispatch('robots/getParts');
   },
   components: { PartSelector, CollapsibleSection },
   data() {
@@ -99,7 +99,7 @@ export default {
   mixin: [createdHookMixin],
   computed: {
     availableParts() {
-      return this.$store.state.parts;
+      return this.$store.state.robots.parts;
     },
     saleBorderClass() {
       return this.selectedRobot.head.onSale ? "sale-border" : "";
@@ -123,7 +123,8 @@ export default {
         robot.rightArm.cost +
         robot.torso.cost +
         robot.base.cost;
-      this.$store.dispatch("addRobotToCart", Object.assign({}, robot, { cost }));
+      this.$store.dispatch('robots/addRobotToCart', Object.assign({}, robot, { cost }))
+      .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     }
   }
