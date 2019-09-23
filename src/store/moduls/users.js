@@ -3,6 +3,8 @@ import axios from 'axios';
 export default {
   state: {
     user: null,
+    foo: 'users-foo',
+    
   },
   mutations: {
     updateCurrentUser(state, user) {
@@ -10,6 +12,9 @@ export default {
     },
   },
   getters: {
+    foo(state, getters, rootState){
+			return `users-getter/${rootState.foo}`;
+		}
   },
   actions: {
     signIn({ commit }) {
