@@ -242,9 +242,7 @@ export default {
   padding: 3px;
   font-size: 16px;
 }
-.sale-border {
-  border: 3px solid red;
-}
+
 .preview {
   position: absolute;
   top: -20px;
