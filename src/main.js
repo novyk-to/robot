@@ -7,7 +7,7 @@ import currencyFilter from './shared/currency-filter';
 
 Vue.config.productionTip = false
 Vue.directive('pin', pinDirective);
-Vue.directive('currency', currencyFilter);
+Vue.filter('currency', currencyFilter);
 
 new Vue({
   render: h => h(App),
